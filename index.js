@@ -14,7 +14,7 @@ dotevn.config();
 // app.use('/v2/top-headlines',router)
 // https://newsapi.org/v2/top-headlines?country=us&apiKey=3a06d5d684514e1cbad640667f422c58
 //creating the news-------------------------------
-app.post('/api/createnews',async (req,res)=>{
+app.post('/top-news/createnews',async (req,res)=>{
     const {source,author,title,description,url,urlToImage}=req.body
     // you can apply some check condition ow okey
     if(!source || !author || !title || !description || !url || !urlToImage){
@@ -38,7 +38,7 @@ app.post('/api/createnews',async (req,res)=>{
 
 // getting the news-------------------------------.
 
-app.get('/newsapi',async (req,res)=>{
+app.get('/top-news',async (req,res)=>{
     const {country,category,q,pageSize,page}=req.query;
     try {
         let result=[]
