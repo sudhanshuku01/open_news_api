@@ -72,7 +72,7 @@ app.get('/top-news',async (req,res)=>{
                     }
                 ]
             }).sort({publishedAt:-1}).limit(pageSize).skip(pageSize*(page-1)).select({country:0,category:0,__v:0});
-        }else if(country && q && category){
+        }else{
             result=await Newsmodel.find({
                 $and:[
                     { category:category },
@@ -84,8 +84,6 @@ app.get('/top-news',async (req,res)=>{
                     }
                 ]
             }).sort({publishedAt:-1}).limit(pageSize).skip(pageSize*(page-1)).select({country:0,category:0,__v:0});
-        }else{
-            result=await Newsmodel.find().sort({publishedAt:-1}).limit(pageSize).skip(pageSize*(page-1)).select({country:0,category:0,__v:0});
         }
             res.status(200).json({
                 status: "ok",
